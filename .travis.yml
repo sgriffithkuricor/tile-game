@@ -1,0 +1,10 @@
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t tile-game-tavis -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true tile-game-tavis npm run test --coverage
