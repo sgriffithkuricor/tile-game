@@ -137,12 +137,33 @@ module.exports = [
       }
     ]
   },
+  {
+    test: /\.(scss)$/,
+    include: path.resolve(__dirname, 'styles'),
+    use: [
+      { loader: 'style-loader' },
+      {
+        loader: 'css-loader',
+        options: {
+          importLoaders: 1,
+          sourceMap: 1,
+          modules: true
+        }
+      },
+      {
+        loader: 'sass-loader',
+        options: {
+          sourceMap: true
+        }
+      }
+    ] 
+  },
   // Global SASS (from app)
   // ===============================
   // Do not modularize these imports
   // (leave them as global css styles)
   {
-    test: /\.(sass|scss)$/,
+    test: /\.(sass)$/,
     include: path.resolve(__dirname, 'styles/base'),
     use: [
       {
@@ -182,7 +203,7 @@ module.exports = [
   // Local SASS css-modules
   // ======================
   {
-    test: /\.(sass|scss)$/,
+    test: /\.(sass)$/,
     exclude: path.resolve(__dirname, 'styles/base'),
     use: [
       {

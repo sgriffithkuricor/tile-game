@@ -1,7 +1,7 @@
 #!/bin/sh
 
 BASEDIR=$(dirname "$0")
-cd "watching $BASEDIR/../.."
+cd $BASEDIR/../..
 
 docker build -f Dockerfile.dev -t tile-game-dev .
 
